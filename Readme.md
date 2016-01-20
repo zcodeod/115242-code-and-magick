@@ -4,7 +4,7 @@
 [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Вадим Зеличонок](https://htmlacademy.ru/profile/id115242).
-* Наставник: `Сергей Клочковский`.
+* Наставник: `Сергей Ключковский`.
 
 ### Стремительно изучаю фронт-энд
 

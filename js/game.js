@@ -373,27 +373,48 @@
         window.removeEventListener('keydown', this._pauseListener);
       }
     },
-
-    /**
+      
+      
+      
+      /**
      * Отрисовка экрана паузы.
      */
     _drawPauseScreen: function() {
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          console.log('you have won!');
+          this._drawMessage(["Ты победил!"]);
           break;
         case Verdict.FAIL:
-          console.log('you have failed!');
+          this._drawMessage(["Ты проиграл!"]);
           break;
         case Verdict.PAUSE:
-          console.log('game is on pause!');
+          this._drawMessage(["Игра на паузе!"]);
           break;
         case Verdict.INTRO:
-          console.log('welcome to the game! Press Space to start');
+          this._drawMessage(["Добро пожаловать!", "Нажми пробел", "чтобы начать"]);
           break;
       }
     },
 
+    /**
+     * Отрисовка сообщения
+     */
+
+    _drawMessage: function(lines) {
+      this.ctx.fillStyle = "rgb(0, 0, 0, .3)";
+      this.ctx.fillRect(400, 10, 200, 200);
+
+      this.ctx.fillStyle = "#fff";
+      this.ctx.fillRect(390, 0, 200, 200);
+
+      this.ctx.fillStyle = "#000";
+      this.ctx.font = "16px PT Mono";
+
+      for(var i = 0; i < lines.length; i++) {
+        this.ctx.fillText(lines[i], 400, 40 + 20 * i);
+      }
+    },
+      
     /**
      * Предзагрузка необходимых изображений для уровня.
      * @param {function} callback

@@ -373,9 +373,7 @@
         window.removeEventListener('keydown', this._pauseListener);
       }
     },
-      
-      
-      
+
       /**
      * Отрисовка экрана паузы.
      */
@@ -417,7 +415,7 @@
 
     //Валидация формы
     //1. Ограничение 
-      
+
     /**
      * Предзагрузка необходимых изображений для уровня.
      * @param {function} callback

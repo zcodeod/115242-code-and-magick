@@ -382,16 +382,16 @@
     _drawPauseScreen: function() {
       switch (this.state.currentStatus) {
         case Verdict.WIN:
-          this._drawMessage(["Ты победил!"]);
+          this._drawMessage(['Ты победил!']);
           break;
         case Verdict.FAIL:
-          this._drawMessage(["Ты проиграл!"]);
+          this._drawMessage(['Ты проиграл!']);
           break;
         case Verdict.PAUSE:
-          this._drawMessage(["Игра на паузе!"]);
+          this._drawMessage(['Игра на паузе!']);
           break;
         case Verdict.INTRO:
-          this._drawMessage(["Добро пожаловать!", "Нажми пробел", "чтобы начать"]);
+          this._drawMessage(['Добро пожаловать!', 'Нажми пробел', 'чтобы начать']);
           break;
       }
     },
@@ -401,19 +401,22 @@
      */
 
     _drawMessage: function(lines) {
-      this.ctx.fillStyle = "rgb(0, 0, 0, .3)";
+      this.ctx.fillStyle = 'rgb(0, 0, 0, .3)';
       this.ctx.fillRect(400, 10, 200, 200);
 
-      this.ctx.fillStyle = "#fff";
+      this.ctx.fillStyle = '#fff';
       this.ctx.fillRect(390, 0, 200, 200);
 
-      this.ctx.fillStyle = "#000";
-      this.ctx.font = "16px PT Mono";
+      this.ctx.fillStyle = '#000';
+      this.ctx.font = '16px PT Mono';
 
-      for(var i = 0; i < lines.length; i++) {
+      for (var i = 0; i < lines.length; i++) {
         this.ctx.fillText(lines[i], 400, 40 + 20 * i);
       }
     },
+
+    //Валидация формы
+    //1. Ограничение 
       
     /**
      * Предзагрузка необходимых изображений для уровня.

@@ -38,7 +38,7 @@
 
     notifyFields.style.visibility = !formValid ? 'visible' : 'hidden';
     notifyName.style.visibility = !nameValid ? 'visible' : 'hidden';
-    notifyText.style.visibility = !textValid ? 'visinle' : 'hidden';
+    notifyText.style.visibility = !textValid ? 'visible' : 'hidden';
 
     button.disabled = !formValid;
 

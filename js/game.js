@@ -413,8 +413,15 @@
       }
     },
 
-    //Валидация формы
-    //1. Ограничение
+    define(function() {
+
+  // Валидация формы:
+  // Форма и поля ввода
+  var formElement = document.forms['review-form'];
+  var formName = formElement['review-name'];
+  var formReview = formElement['review-text'];
+
+  },
 
     /**
      * Предзагрузка необходимых изображений для уровня.

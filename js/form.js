@@ -38,7 +38,7 @@
 
     notifyFields.style.visibility = !formValid ? 'visible' : 'hidden';
     notifyName.style.visibility = !nameValid ? 'visible' : 'hidden';
-    notifyText.style.visibility = !textValid ? 'visinle' : 'hidden';
+    notifyText.style.visibility = !textValid ? 'visible' : 'hidden';
 
     button.disabled = !formValid;
 
@@ -51,6 +51,19 @@
 
   for ( var i = 0; i < markInput.length; ++i ) {
     markInput[i].onclick = validate;
+  }
+
+  nameInput.value = docCookies.geItItem('nameInput');
+  markInput.value = docCookies.geItItem('nameInput');
+
+  form.onsubmint = function(ect){
+  	evt.preventDefault();
+
+  	var dateToExpire = +Date.now() + 7 * 24 * 60 * 60 * 1000;
+  	var formattedDateToExpire = new Date(dateToExpire).toUTCString();
+
+  	document.cookie = 'nameInput=' + nameInput.value + ';expires=' + formattedDateToExpire;
+  	document.cookie = 'markInput=' + markInput.value + ';expires=' + formattedDateToExpire;
   }
 
 })();

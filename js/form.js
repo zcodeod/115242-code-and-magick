@@ -53,4 +53,17 @@
     markInput[i].onclick = validate;
   }
 
+  nameInput.value = docCookies.geItItem('nameInput');
+  markInput.value = docCookies.geItItem('nameInput');
+
+  form.onsubmint = function(ect){
+  	evt.preventDefault();
+
+  	var dateToExpire = +Date.now() + 7 * 24 * 60 * 60 * 1000;
+  	var formattedDateToExpire = new Date(dateToExpire).toUTCString();
+
+  	document.cookie = 'nameInput=' + nameInput.value + ';expires=' + formattedDateToExpire;
+  	document.cookie = 'markInput=' + markInput.value + ';expires=' + formattedDateToExpire;
+  }
+
 })();

@@ -1,4 +1,5 @@
 'use strict';
+/* global docCookies */
 
 (function() {
   var formContainer = document.querySelector('.overlay-container');
@@ -53,7 +54,6 @@
     markInput[i].onclick = validate;
   }
 
-  var docCookies;
   nameInput.value = docCookies.getItem('nameInput');
   markInput.value = docCookies.getItem('markInput') || 3;
 

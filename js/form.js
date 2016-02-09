@@ -53,17 +53,27 @@
     markInput[i].onclick = validate;
   }
 
-  nameInput.value = docCookies.geItItem('nameInput');
-  markInput.value = docCookies.geItItem('nameInput');
+  var docCookies;
+  nameInput.value = docCookies.getItem('nameInput');
+  markInput.value = docCookies.getItem('markInput') || 3;
 
-  form.onsubmint = function(ect){
-  	evt.preventDefault();
+  form.onsubmit = function(evt) {
+    evt.preventDefault();
 
-  	var dateToExpire = +Date.now() + 7 * 24 * 60 * 60 * 1000;
-  	var formattedDateToExpire = new Date(dateToExpire).toUTCString();
+    var today = new Date();
+    var thisYear = today.getFullYear();
+    var thisBirthday = new Date(thisYear, 7, 26);
 
-  	document.cookie = 'nameInput=' + nameInput.value + ';expires=' + formattedDateToExpire;
-  	document.cookie = 'markInput=' + markInput.value + ';expires=' + formattedDateToExpire;
-  }
+    if ( today < thisBirthday ) {
+      thisBirthday = new Date(thisYear - 1, 7, 26);
+    }
+
+    var secondDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var maxAge = secondDate - thisBirthday;
+    var dateToExpire = new Date(+today + maxAge);
+
+    document.cookie = 'nameInput=' + nameInput.value + ';expires=' + dateToExpire.toUTCString();
+    document.cookie = 'markInput=' + markInput.value + ';expires=' + dateToExpire.toUTCString();
+  };
 
 })();

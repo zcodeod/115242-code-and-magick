@@ -1,4 +1,5 @@
 'use strict';
+/* global docCookies */
 
 (function() {
   var formContainer = document.querySelector('.overlay-container');
@@ -52,5 +53,27 @@
   for ( var i = 0; i < markInput.length; ++i ) {
     markInput[i].onclick = validate;
   }
+
+  nameInput.value = docCookies.getItem('nameInput');
+  markInput.value = docCookies.getItem('markInput') || 3;
+
+  form.onsubmit = function(evt) {
+    evt.preventDefault();
+
+    var today = new Date();
+    var thisYear = today.getFullYear();
+    var thisBirthday = new Date(thisYear, 7, 26);
+
+    if ( today < thisBirthday ) {
+      thisBirthday = new Date(thisYear - 1, 7, 26);
+    }
+
+    var secondDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var maxAge = secondDate - thisBirthday;
+    var dateToExpire = new Date(+today + maxAge);
+
+    document.cookie = 'nameInput=' + nameInput.value + ';expires=' + dateToExpire.toUTCString();
+    document.cookie = 'markInput=' + markInput.value + ';expires=' + dateToExpire.toUTCString();
+  };
 
 })();

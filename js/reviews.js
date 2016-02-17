@@ -33,37 +33,37 @@ function getElementFromTemplate(data) {
 	*/
 
   if ('content' in template) {
-    element = template.content.children[0].cloneNode(true);
+    var templateElement = template.content.children[0].cloneNode(true);
   } else {
-    element = template.children[0].cloneNode(true);
+    templateElement = template.children[0].cloneNode(true);
   }
 
   var number = ['two', 'three', 'four', 'five'][data.rating - 2];
-  var rateStar = element.querySelector('.review-rating');
+  var rateStar = templateElement.querySelector('.review-rating');
 
   if ( data.rating > 2 ) {
     rateStar.classList.add('review-rating-' + number);
   }
 
-  var authorImage = element.querySelector('.review-author');
-  element.querySelector('.review-text').textContent = data.description;
+  var authorImage = templateElement.querySelector('.review-author');
+  templateElement.querySelector('.review-text').textContent = data.description;
 
   var avatarImage = new Image();
   avatarImage.onload = function() {
     avatarImage.style.width = '124px';
     avatarImage.style.height = '124px';
     avatarImage.classList.add('review-author');
-    element.replaceChild(avatarImage, authorImage);
+    templateElement.replaceChild(avatarImage, authorImage);
   };
 
 // 4. Добавляем обработку возможных ошибок
 
   avatarImage.onerror = function() {
-    element.classList.add('review-load-failure');
+    templateElement.classList.add('review-load-failure');
   };
 
   avatarImage.src = data.author.picture;
 
-  return element;
+  return templateElement;
 
 }

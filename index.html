@@ -6,6 +6,13 @@
   <link rel="stylesheet" href="css/main.css">
   <script src="lib/cookies.js"></script>
   <title>Код и Магия</title>
+  <script>
+	var reviews = [];
+	function __reviewsLoadCallback(data) {
+		reviews = data;
+	};
+  </script>
+  <script src="//up.htmlacademy.ru/assets/js_intensive/jsonp/reviews.js"></script>
 </head>
 <body>
 
@@ -121,8 +128,9 @@
 
 <!--<script src="js/check.js"></script>-->
 <script src="js/form.js"></script>
+<script src="js/reviews.js"></script>
 <script src="js/game.js"></script>
-<!--<script src="js/game-stat.min.js"></script>-->
 <canvas id="canvas"></canvas>
+
 </body>
 </html>

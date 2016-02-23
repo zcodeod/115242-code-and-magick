@@ -5,7 +5,6 @@ var reviewsFilter = document.querySelector('.reviews-filter');
 var template = document.getElementById('review-template');
 
 
-var filters = document.querySelector('.reviews-filter');
 var activeFilter = 'filter-all';
 var reviews = [];
 
@@ -73,12 +72,12 @@ function setActiveFilter(id) {
       break;
 
     case 'reviews-recent':
+      var twoWeeksAgo = new Date() - 14 * 24 * 3600 * 1000;
       filteredReviews = filteredReviews.filter(function(a) {
-        var twoWeeksAgo = new Date() - 14 * 24 * 3600 * 1000;
         return a.date <= twoWeeksAgo;
       });
       filteredReviews = filteredReviews.sort(function(a, b) {
-        return Date.parse(a.date) - Date.parse(b.date);
+        return Date.parse(b.date) - Date.parse(a.date);
       });
       break;
   }
@@ -117,8 +116,10 @@ function getReviews() {
 
 function getElementFromTemplate(data) {
 
+  var templateElement;
+
   if ('content' in template) {
-    var templateElement = template.content.children[0].cloneNode(true);
+    templateElement = template.content.children[0].cloneNode(true);
   } else {
     templateElement = template.children[0].cloneNode(true);
   }
